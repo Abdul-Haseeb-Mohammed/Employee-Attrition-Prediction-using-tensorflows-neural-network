@@ -1,10 +1,10 @@
-import tensorflow as tf
 import pickle
 import os
 from src.data.make_dataset import load_data
 from src.features.build_features import standardize, train_test_splitter
 from src.models.train_model import set_random_seed, declare_model, compile_model, train_model, evaluate_model, create_lr_scheduler
-from src.visualization.visualize import plot_training_curves, plot_lr_vs_loss
+from src.visualization.visualize import plot_training_curves, plot_lr_vs_loss, metrics_score
+from src.models.predict_model import make_predictions
 
 if __name__ == "__main__":
     # Define the base path for saving models
@@ -129,3 +129,4 @@ if __name__ == "__main__":
     #plot_lr_vs_loss(history_8, save_path=os.path.join(visual_base_path, 'lr_vs_loss_model8.png'))
     with open(os.path.join(base_path, 'model_8.pkl'), 'wb') as file:
         pickle.dump(model_8, file)
+    
